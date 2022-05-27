@@ -56,12 +56,13 @@ const Dashboard = () => {
     const guardarDatos = async(e) => {
         e.preventDefault();
         setExito(false);
+        setName('');
         if (!name.trim()) {
             setErrorB('Por favor ingrese una busqueda');
             return;
         }
 
-        if (!/^[A-Za-z]*/.test(name)) {
+        if (!/^[a-zA-Z\s]*$/.test(name)) {
             setErrorB('Por favor ingrese una busqueda valida');
             return;
         }

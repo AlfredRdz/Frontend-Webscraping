@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom'
 
@@ -12,6 +12,13 @@ const Index = () => {
   const [errorE, setErrorE] = useState(null);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('autenticado')) {
+        navigate('/dashboard', { replace: true });
+    }
+
+}, [])
 
   const guardarDatos = async(e) => {
     e.preventDefault();
